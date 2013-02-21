@@ -1,0 +1,105 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}">
+	<script src="@{'public/javascripts/jquery-1.6.4.min.js'}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+		jQuery(".details").hide();
+		//toggle the componenet with class msg_body
+		jQuery(".ligneComplete").click(function(){
+			jQuery(this).find('.details').slideToggle(1400);
+		});
+	});
+	</script>
+    
+	<title>Affichage du contenu du fichier PayMen</title>
+</head>
+<body>
+	%{ actualCat = 'null'}%
+	%{
+		def lastNum = 1;
+	}%
+	
+	<h1>Contenu du fichier Paymen</h1>
+   	<div id="listRmhLines">
+ 		<ol>	
+			#{list items:rmhLines, as:'rmhLine'}
+					%{
+					
+					println "<div class='ligneComplete'><div id='numLigne'>${rmhLine.num}</div>"
+						if (!rmhLine.ligneValide){
+							println '<div id="ligneInvalide">\n<li>'+"${rmhLine.commentaire}"
+								println '<div id="status">Invalide</div>'
+						} 
+						else{
+							println '<div id="ligneValide">\n<li>' + "Mandat : ${rmhLine.refMandatNumMandat.value} sur bordereaux ${rmhLine.refMandatBordereaux.value}";
+								println '<div id="status">Valide</div>'
+						}}%
+
+								<div class="details">
+
+									<div id="detailsSection">
+										<b>Référence train de virement</b><br> <hr /> 
+										%{
+											println"<div id ='${rmhLine.trainDeVirementNumeroDep.statusValide}'><div id='label'>${rmhLine.trainDeVirementNumeroDep.label}</div><div id='value'>${rmhLine.trainDeVirementNumeroDep.value}<div id='commentaire'>${rmhLine.trainDeVirementNumeroDep.commentaire}</div></div></div><br>";
+											println"<div id ='${rmhLine.trainDeVirementCodeCollectivite.statusValide}'><div id='label'>${rmhLine.trainDeVirementCodeCollectivite.label}</div><div id='value'>${rmhLine.trainDeVirementCodeCollectivite.value}<div id='commentaire'>${rmhLine.trainDeVirementCodeCollectivite.commentaire}</div></div></div><br>";
+											println"<div id ='${rmhLine.trainDeVirementNumeroTrain.statusValide}'><div id='label'>${rmhLine.trainDeVirementNumeroTrain.label}</div><div id='value'>${rmhLine.trainDeVirementNumeroTrain.value}<div id='commentaire'>${rmhLine.trainDeVirementNumeroTrain.commentaire}</div></div></div><br>";
+											println"<div id ='${rmhLine.trainDeVirementCodeNatureDepense.statusValide}'><div id='label'>${rmhLine.trainDeVirementCodeNatureDepense.label}</div><div id='value'>${rmhLine.trainDeVirementCodeNatureDepense.value}<div id='commentaire'>${rmhLine.trainDeVirementCodeNatureDepense.commentaire}</div></div></div><br>";
+										}%
+									</div>
+									<div id="detailsSection">
+										<b>Matricule du bénéficiaire</b><br><hr /> 
+										%{
+											println"<div id ='${rmhLine.refBeneficiaireMatricule.statusValide}'><div id='label'>${rmhLine.refBeneficiaireMatricule.label}</div><div id='value'>${rmhLine.refBeneficiaireMatricule.value}<div id='commentaire'>${rmhLine.refBeneficiaireMatricule.commentaire}</div></div></div><br>";
+										}%
+									</div>
+									<div id="detailsSection">
+										<b>Monnaie</b><br><hr /> 
+										%{
+											println"<div id ='${rmhLine.monnaieCode.statusValide}'><div id='label'>${rmhLine.monnaieCode.label}</div><div id='value'>${rmhLine.monnaieCode.value}<div id='commentaire'>${rmhLine.monnaieCode.commentaire}</div></div></div><br>";
+											println"<div id ='${rmhLine.monnaieMontant.statusValide}'><div id='label'>${rmhLine.monnaieMontant.label}</div><div id='value'>${rmhLine.monnaieMontant.value}<div id='commentaire'>${rmhLine.monnaieMontant.commentaire}</div></div></div><br>"
+										}%
+									</div>
+									<div id="detailsSection">
+										<b>Références Mandat</b><br><hr /> 
+										%{
+											println"<div id ='${rmhLine.refMandatExercice.statusValide}'><div id='label'>${rmhLine.refMandatExercice.label}</div><div id='value'>${rmhLine.refMandatExercice.value}<div id='commentaire'>${rmhLine.refMandatExercice.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refMandatBordereaux.statusValide}'><div id='label'>${rmhLine.refMandatBordereaux.label}</div><div id='value'>${rmhLine.refMandatBordereaux.value}<div id='commentaire'>${rmhLine.refMandatBordereaux.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refMandatNumMandat.statusValide}'><div id='label'>${rmhLine.refMandatNumMandat.label}</div><div id='value'>${rmhLine.refMandatNumMandat.value}<div id='commentaire'>${rmhLine.refMandatNumMandat.commentaire}</div></div></div><br>"
+										}%
+									</div>
+									<div id="detailsSection">
+										<b>Références bancaires</b><br><hr /> 
+										%{
+											println"<div id ='${rmhLine.refBancBIC.statusValide}'><div id='label'>${rmhLine.refBancBIC.label}</div><div id='value'>${rmhLine.refBancBIC.value}<div id='commentaire'>${rmhLine.refBancBIC.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancIBAN.statusValide}'><div id='label'>${rmhLine.refBancIBAN.label}</div><div id='value'>${rmhLine.refBancIBAN.value.value}<div id='commentaire'>${rmhLine.refBancIBAN.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancDomiciliation.statusValide}'><div id='label'>${rmhLine.refBancDomiciliation.label}</div><div id='value'>${rmhLine.refBancDomiciliation.value}<div id='commentaire'>${rmhLine.refBancDomiciliation.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancTitulaireNomPrenom.statusValide}'><div id='label'>${rmhLine.refBancTitulaireNomPrenom.label}</div><div id='value'>${rmhLine.refBancTitulaireNomPrenom.value}<div id='commentaire'>${rmhLine.refBancTitulaireNomPrenom.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancTitulaireAdresse.statusValide}'><div id='label'>${rmhLine.refBancTitulaireAdresse.label}</div><div id='value'>${rmhLine.refBancTitulaireAdresse.value}<div id='commentaire'>${rmhLine.refBancTitulaireAdresse.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancTitulairePays.statusValide}'><div id='label'>${rmhLine.refBancTitulairePays.label}</div><div id='value'>${rmhLine.refBancTitulairePays.value}<div id='commentaire'>${rmhLine.refBancTitulairePays.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancTitulaireId.statusValide}'><div id='label'>${rmhLine.refBancTitulaireId.label}</div><div id='value'>${rmhLine.refBancTitulaireId.value}<div id='commentaire'>${rmhLine.refBancTitulaireId.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancBeneficiaireNomPrenom.statusValide}'><div id='label'>${rmhLine.refBancBeneficiaireNomPrenom.label}</div><div id='value'>${rmhLine.refBancBeneficiaireNomPrenom.value}<div id='commentaire'>${rmhLine.refBancBeneficiaireNomPrenom.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancBeneficiaireAdresse.statusValide}'><div id='label'>${rmhLine.refBancBeneficiaireAdresse.label}</div><div id='value'>${rmhLine.refBancBeneficiaireAdresse.value}<div id='commentaire'>${rmhLine.refBancBeneficiaireAdresse.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancBeneficiairePays.statusValide}'><div id='label'>${rmhLine.refBancBeneficiairePays.label}</div><div id='value'>${rmhLine.refBancBeneficiairePays.value}<div id='commentaire'>${rmhLine.refBancBeneficiairePays.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancBeneficiaireId.statusValide}'><div id='label'>${rmhLine.refBancBeneficiaireId.label}</div><div id='value'>${rmhLine.refBancBeneficiaireId.value}<div id='commentaire'>${rmhLine.refBancBeneficiaireId.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancLibelleOp.statusValide}'><div id='label'>${rmhLine.refBancLibelleOp.label}</div><div id='value'>${rmhLine.refBancLibelleOp.value}<div id='commentaire'>${rmhLine.refBancLibelleOp.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancLibelleComp.statusValide}'><div id='label'>${rmhLine.refBancLibelleComp.label}</div><div id='value'>${rmhLine.refBancLibelleComp.value}<div id='commentaire'>${rmhLine.refBancLibelleComp.commentaire}</div></div></div><br>"
+											println"<div id ='${rmhLine.refBancFiller.statusValide}'><div id='label'>${rmhLine.refBancFiller.label}</div><div id='value'>${rmhLine.refBancFiller.value}<div id='commentaire'>${rmhLine.refBancFiller.commentaire}</div></div></div><br>"
+				
+										}%
+									</div>
+								</div>
+								</li>
+						</div>
+					</div>
+				#{/list}
+		</ol>
+		<br> 
+		<div id="nav_next"><a href="showDoc?statut=${statut}&position=${rmhLine.num}">Afficher les suivants >>> </a><br></div>
+		<div id="nav_prev"><a href="showDoc?statut=${statut}&position=${position-50}"><<< Afficher les précédents<br></div>
+		
+		
+	</div>
+</body>
+	

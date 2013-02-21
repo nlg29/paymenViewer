@@ -1,0 +1,31 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}">
+	<title>Synthèse de l'analyse du fichier RMH</title>
+</head>
+<body>
+	<h1>Synthèse du fichier Paymen</h1>
+	
+   	<div id="listRmhLines">
+		<h3>Résultat pour le fichier : ${rmhFile.name}</h3><br/>
+		
+		<div id="lineStat">Nombre total de ligne :  ${rmhFile.nbrLigne-1}
+				<div id="status"> <a href="./showDoc"> Voir</a></div>
+		</div>
+ 		
+		<div id="ligneValide">		
+				<div id="lineStat">Nombre de ligne valide :  ${rmhFile.nbrLigneValide} 
+					<div id="status"><a href="./showDoc?statut=true"> Voir</a></div>
+				</div>
+					
+		</div>
+		
+		<div id="ligneInvalide">	
+				<div id="lineStat">Nombre de ligne en erreur : ${rmhFile.nbrLigneErreur} 
+					<div id="status"> <a href="./showDoc?statut=false"> Voir</a></div></div>
+				</div>
+				
+	</div>
+</body>
+	

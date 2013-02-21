@@ -1,0 +1,16 @@
+<!DOCTYPE>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}">
+    <title>Test et visu des fichiers interfaces PayMen</title>
+</head>
+<body>
+	<h1> PayMen Viewer</h1>	
+	#{form @upload(), method:'POST', enctype:'multipart/form-data'}
+		<h4>Sélectionner le fichier por favor</h4>
+		<div id="inputs">
+			<input type="file" name="fInterfacePayMen" size="40"/><input type="submit"/>
+		</div>
+	#{/form}
+</body>
+</html>

@@ -1,0 +1,152 @@
+/*CSS Commun 
+_____________________________________________________________________
+*/
+body{
+	background-color: #1D1D1D;
+	border-radius: 0 10px 0 10px;
+	margin: auto;
+	font-size: 10px;
+}
+
+h1{
+	text-align:center;
+	width : 500px;
+	margin: auto;
+	margin-top: 10px;
+	background-color: #6495ED;	
+	color: #ffffff;
+	border-radius: 10px 10px 0 0px;
+}
+
+form ,#listRmhLines{
+	width : 500px;
+	margin: auto;
+	background-color: #F0F8FF;
+	border-radius: 0 0 10px 10px;
+	padding: 10px 0 10px 0;
+}
+
+
+
+/*CSS sp�cifiques index.html
+_____________________________________________________________________
+*/
+
+h4{
+	text-align: center;
+}
+
+#inputs{
+	width: 80%;
+	margin: auto;
+}
+
+
+/*CSS sp�cifiques showdoc.html
+_____________________________________________________________________
+*/
+
+#ligneValide{
+	color: green;
+ }
+ 
+#ligneInvalide{
+	color: red;
+ }
+
+#status {
+	float: right;
+	padding-right: 10px;
+}
+
+.details{
+	width : 97%;
+	background-color: #EEEEEE;
+	border-radius: 5px;
+	margin-top: 10px;
+	padding: 5px 5px 40px 5px;
+	color: #000000;
+}
+
+hr{
+	margin-bottom: 10px;
+}
+
+#value{
+	width: 60%;
+	margin-bottom: 3px;
+	background-color: #F0F8FF;
+	float: right;
+	text-align: right;
+	margin-right: 15px;
+	height: 12px;
+}
+
+#label{
+	 display: inline-block;
+	margin-bottom: 3px;
+	width: 30%;
+	margin-left: 5px;
+	background-color: #6495ED;
+	color: #ffffff;
+	padding-left: 4px;
+}
+
+#detailsSection{
+	margin: 15px 15px 30px 15px;
+}
+
+#commentaire{
+	color: #AA5555;
+	font-style:italic;
+}
+
+/*Style des listes num�rot�es*/
+ol {
+	counter-reset: repas;
+	margin-left: -20px;
+}
+
+li {
+    list-style-type: none;
+    counter-increment: repas;
+    margin-bottom: 10px;
+}
+
+#numLigne {
+	background: none repeat scroll 0 0 #667788;
+    border-radius: 60px 60px 60px 60px;
+    color: white;
+    float: left;
+    font-size: 0.8em;
+    margin-right: 10px;
+    padding: 3px 10px;
+	text-align:center;
+	width: 5px;
+} 
+
+#false{
+	color: red;
+}
+
+#nav_next{
+	float : right;
+	padding-right: 7px;
+}
+
+#nav_prev{
+	padding-bottom: 7px;
+	padding-left: 7px;
+}
+
+/*CSS sp�cifiques showResule.html
+_____________________________________________________________________
+*/
+
+#lineStat{
+	padding-bottom: 10px;
+	width: 90%;
+	margin: auto;
+	font-size: 1.3em;
+	border-radius: 10px;
+}
